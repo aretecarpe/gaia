@@ -7,10 +7,6 @@
 #include <genesis/config.hpp>
 #include <genesis/errno.hpp>
 
-#if GENESIS_MICROSOFT
-#undef max
-#endif
-
 #include <chrono>
 #include <cstdint>
 #include <limits>
@@ -20,6 +16,10 @@
 
 #if GENESIS_POSIX
 #include <semaphore.h>
+#endif
+
+#if GENESIS_MICROSOFT
+#undef max
 #endif
 
 namespace gaia {

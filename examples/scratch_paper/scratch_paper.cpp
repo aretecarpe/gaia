@@ -17,7 +17,10 @@
 // 	}
 // };
 
+#include <windows.h>
+
 int main(int argc, char** argv) {
+	LONG previous;
 	// object ob{};
 	// genesis::stop_source source{};
 	// std::thread task_one{
