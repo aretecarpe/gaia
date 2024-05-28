@@ -4,8 +4,6 @@
 
 #include <genesis/config.hpp>
 
-#if GENESIS_POSIX
-
 #include "gaia/semaphore.hpp"
 
 #include <fcntl.h>
@@ -184,7 +182,5 @@ inline void named_semaphore_base::remove(const std::string& name) {
 }
 
 } // end namespace genesis
-
-#endif
 
 #endif // GAIA_SEMAPHORE_POSIX_HEADER_INCLUDED

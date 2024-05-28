@@ -4,12 +4,10 @@
 
 #include <genesis/config.hpp>
 
-#if GENESIS_MICROSOFT
-
 #include "gaia/semaphore.hpp"
+#include <windows.h>
 
 #include <system_error>
-#include <windows.h>
 
 namespace gaia {
 
@@ -160,7 +158,5 @@ inline named_semaphore_base::~named_semaphore_base() {
 inline void named_semaphore_base::remove(const std::string& name) { /* No unlink needed for Windows semaphores*/ }
 	
 } // end namespace genesis
-
-#endif
 
 #endif

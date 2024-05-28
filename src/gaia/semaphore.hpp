@@ -208,10 +208,10 @@ using named_semaphore = basic_named_semaphore<std::numeric_limits<uint16_t>::max
 
 } // end namespace gaia
 
+#endif // GENESIS_SEMAPHORE_HEADER_INCLUDED
+
 #if GENESIS_POSIX
 #include "gaia/details/semaphore_posix.hpp"
 #else
 #include "gaia/details/semaphore_windows.hpp"
 #endif
-
-#endif // GENESIS_SEMAPHORE_HEADER_INCLUDED
