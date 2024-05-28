@@ -4,8 +4,6 @@
 
 #include <genesis/config.hpp>
 
-#if GENESIS_MICROSOFT
-
 #include "gaia/shared_library.hpp"
 
 #include <genesis/errno.hpp>
@@ -15,7 +13,7 @@
 namespace gaia {
 
 inline auto shared_library::open() -> shared_library::native_handle_type {
-	return reinterpret_cast<native_handle_type>(LoadLibrary(path_.c_str()));
+	return reinterpret_cast<native_handle_type>(LoadLibrary(path_.string().c_str()));
 }
 
 inline void shared_library::close() {
@@ -48,7 +46,5 @@ void shared_library::check() {
 }
 
 } // end namespace gaia
-
-#endif // GENESIS_MICROSOFT
 
 #endif // GAIA_SHARED_LIBRARY_WINDOWS_HEADER_INCLUDED

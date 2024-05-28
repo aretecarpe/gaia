@@ -150,7 +150,7 @@ inline semaphore_base::native_handle_type unnamed_semaphore_base::native_handle(
 
 // named semaphore functions
 inline named_semaphore_base::named_semaphore_base(create_t, const std::string& name, ptrdiff_t init_count, ptrdiff_t init_max) :
-	name_{name},
+	sem_name_{name},
 	handle_{reinterpret_cast<native_handle_type>(
 	  CreateSemaphore(nullptr, static_cast<LONG>(init_count), static_cast<LONG>(init_max), name.c_str()))}
 {
@@ -158,7 +158,7 @@ inline named_semaphore_base::named_semaphore_base(create_t, const std::string& n
 }
 
 inline named_semaphore_base::named_semaphore_base(open_or_create_t, const std::string& name, ptrdiff_t init_count, ptrdiff_t init_max) :
-	name_{name},
+	sem_name_{name},
 	handle_{reinterpret_cast<native_handle_type>(
 	  CreateSemaphore(nullptr, static_cast<LONG>(init_count), static_cast<LONG>(init_max), name.c_str()))}
 {
