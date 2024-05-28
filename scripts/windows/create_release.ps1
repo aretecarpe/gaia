@@ -30,5 +30,5 @@ catch {
 }
 
 Write-Host "Building Release version using $cpu_count threads..."
-cmake --build "build/" -j $cpu_count
+cmake --build "build/" -j $cpu_count --config Release
 Write-Host "Finished building Release!"
