@@ -1,3 +1,5 @@
+#if !defined GENESIS_SEMAPHORE_WINDOWS_HEADER_INCLUDED
+#define GENESIS_SEMAPHORE_WINDOWS_HEADER_INCLUDED
 #pragma once
 
 #include <genesis/config.hpp>
@@ -158,5 +160,7 @@ inline named_semaphore_base::~named_semaphore_base() {
 inline void named_semaphore_base::remove(const std::string& name) { /* No unlink needed for Windows semaphores*/ }
 	
 } // end namespace genesis
+
+#endif
 
 #endif
