@@ -25,7 +25,7 @@ inline void semaphore_base::release(semaphore_base::native_handle_type handle) {
 	}
 }
 
-inline void semaphore_base::release(semaphore_base::native_handle_type handle, std::error_code& ec) {
+inline void semaphore_base::release(semaphore_base::native_handle_type handle, std::error_code& ec) noexcept {
 	LONG previous;
 	if (!ReleaseSemaphore(reinterpret_cast<HANDLE>(handle), 1, &previous)) {
 		ec = genesis::get_last_error();
@@ -108,16 +108,40 @@ inline unnamed_semaphore_base::~unnamed_semaphore_base() {
 	}
 }
 
-inline void unnamed_semaphore_base::release() { semaphore_base::release(handle_); }
+inline void unnamed_semaphore_base::release() {
+	semaphore_base::release(handle_); 
+}
 
-inline void unnamed_semaphore_base::release(ptrdiff_t count) { semaphore_base::release(handle_, count); }
+inline void unnamed_semaphore_base::release(std::error_code& ec) noexcept {
+	semaphore_base::release(handle_, ec);
+}
 
-inline bool unnamed_semaphore_base::try_acquire() { return semaphore_base::try_acquire(handle_); }
+inline void unnamed_semaphore_base::release(ptrdiff_t count) {
+	semaphore_base::release(handle_, count); 
+}
 
-inline void unnamed_semaphore_base::acquire() { semaphore_base::acquire(handle_); }
+inline void unnamed_semaphore_base::release(ptrdiff_t count, std::error_code& ec) noexcept {
+	semaphore_base::release(handle_, count, ec);	
+}
 
-inline bool unnamed_semaphore_base::try_acquire_for_ns(uint64_t ns) {
-	return semaphore_base::try_acquire_for(handle_, ns);
+inline void unnamed_semaphore_base::acquire() { 
+	semaphore_base::acquire(handle_); 
+}
+
+inline void unnamed_semaphore_base::acquire(std::error_code& ec) noexcept {
+	semaphore_base::acquire(handle_);
+}
+
+inline bool unnamed_semaphore_base::try_acquire() { 
+	return semaphore_base::try_acquire(handle_); 
+}
+
+inline bool unnamed_semaphore_base::try_acquire_for_ns(duration_type duration) {
+	return semaphore_base::try_acquire_for(handle_, duration);
+}
+
+inline bool unnamed_semaphore_base::try_acquire_for_ns(duration_type duration, std::error_code& ec) noexcept {
+	return semaphore_base::try_acquire_for(handle_, duration, ec);
 }
 
 inline semaphore_base::native_handle_type unnamed_semaphore_base::native_handle() const noexcept {
