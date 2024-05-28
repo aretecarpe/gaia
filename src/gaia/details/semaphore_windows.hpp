@@ -7,7 +7,7 @@
 #include "gaia/semaphore.hpp"
 
 #include <system_error>
-#include <Windows.h>
+#include <windows.h>
 
 namespace gaia {
 

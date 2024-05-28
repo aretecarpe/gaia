@@ -10,7 +10,7 @@
 
 #include <genesis/errno.hpp>
 
-#include <Windows.h>
+#include <windows.h>
 
 namespace gaia {
 
