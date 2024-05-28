@@ -23,8 +23,9 @@
 #include "gaia/tags.hpp"
 
 #include <genesis/config.hpp>
-#include <genesis/errno.hpp>
+// #include <genesis/errno.hpp>
 
+#include <system_error>
 #include <chrono>
 #include <cstdint>
 #include <limits>
@@ -32,25 +33,25 @@
 #include <thread>
 #include <utility>
 
-#if GENESIS_POSIX
-#include <semaphore.h>
-#endif
-
-// #if GENESIS_MICROSOFT
-// #undef max
+// #if GENESIS_POSIX
+// #include <semaphore.h>
 // #endif
+
+#if GENESIS_MICROSOFT
+#undef max
+#endif
 
 namespace gaia {
 
 class semaphore_base {
 public:
-#if GENESIS_POSIX
-	using native_handle_type = sem_t*;
-	static constexpr native_handle_type invalid_handle = nullptr;
-#else
+// #if GENESIS_POSIX
+// 	using native_handle_type = sem_t*;
+// 	static constexpr native_handle_type invalid_handle = nullptr;
+// #else
 	using native_handle_type = intptr_t;
 	static constexpr native_handle_type invalid_handle = 0;
-#endif
+// #endif
 
 	using duration_type = std::chrono::nanoseconds;
 
@@ -78,11 +79,11 @@ protected:
 
 class unnamed_semaphore_base : public semaphore_base {
 protected:
-#if GENESIS_POSIX
-	mutable sem_t handle_;
-#else
+// #if GENESIS_POSIX
+// 	mutable sem_t handle_;
+// #else
 	native_handle_type handle_;
-#endif
+// #endif
 
 public:
 	unnamed_semaphore_base(ptrdiff_t init_count);
@@ -199,7 +200,7 @@ public:
 };
 
 using binary_semaphore = basic_semaphore<1>;
-// using semaphore = basic_semaphore<std::numeric_limits<uint16_t>::max()>;
+using semaphore = basic_semaphore<std::numeric_limits<uint16_t>::max()>;
 
 template <ptrdiff_t least_max_value>
 class basic_named_semaphore : public named_semaphore_base {
@@ -222,7 +223,7 @@ public:
 };
 
 using named_binary_semaphore = basic_named_semaphore<1>;
-// using named_semaphore = basic_named_semaphore<std::numeric_limits<uint16_t>::max()>;
+using named_semaphore = basic_named_semaphore<std::numeric_limits<uint16_t>::max()>;
 
 } // end namespace gaia
 
