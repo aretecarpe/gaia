@@ -47,5 +47,11 @@
 				"OS": "windows"
 			}
 		}
+	],
+	"buildPresets": [
+		{
+			"name": "msvc-x86_64-release",
+			"configurePreset": "msvc-x86_64-release"
+		}
 	]
 }

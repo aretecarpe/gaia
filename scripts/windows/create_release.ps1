@@ -30,5 +30,5 @@ catch {
 }
 
 Write-Host "Building Release version using $cpu_count threads..."
-cmake --build "build/" -j $cpu_count --config Release
+cmake --build "build/" -j $cpu_count --preset msvc-x86_64-release
 Write-Host "Finished building Release!"
