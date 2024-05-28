@@ -33,9 +33,9 @@
 #include <thread>
 #include <utility>
 
-// #if GENESIS_POSIX
-// #include <semaphore.h>
-// #endif
+#if GENESIS_POSIX
+#include <semaphore.h>
+#endif
 
 #if GENESIS_MICROSOFT
 #undef max
