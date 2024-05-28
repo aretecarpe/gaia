@@ -1,8 +1,10 @@
 #pragma once
 
-#include "gaia/semaphore.hpp"
+#include <genesis/config.hpp>
 
 #if GENESIS_MICROSOFT
+
+#include "gaia/semaphore.hpp"
 
 #include <system_error>
 #include <Windows.h>
@@ -12,7 +14,7 @@ namespace gaia {
 namespace {
 
 inline void check(semaphore_base::native_handle_type handle) {
-	if (handle == semaphore_base::invalid_handle) { throw_last_error(); }
+	if (handle == semaphore_base::invalid_handle) { genesis::throw_last_error(); }
 }
 
 } // end annon namespace
@@ -20,28 +22,28 @@ inline void check(semaphore_base::native_handle_type handle) {
 inline void semaphore_base::release(semaphore_base::native_handle_type handle) {
 	LONG previous;
 	if (!ReleaseSemaphore(reinterpret_cast<HANDLE>(handle), 1, &previous)) {
-		throw_last_error();
+		genesis::throw_last_error();
 	}
 }
 
 inline void semaphore_base::release(semaphore_base::native_handle_type handle, std::error_code& ec) {
 	LONG previous;
 	if (!ReleaseSemaphore(reinterpret_cast<HANDLE>(handle), 1, &previous)) {
-		ec = get_last_error();
+		ec = genesis::get_last_error();
 	}
 }
 
 inline void semaphore_base::release(semaphore_base::native_handle_type handle, ptrdiff_t count) {
 	LONG previous;
 	if (!ReleaseSemaphore(reinterpret_cast<HANDLE>(handle), static_cast<LONG>(count), &previous)) {
-		throw_last_error();
+		genesis::throw_last_error();
 	}
 }
 
 inline void semaphore_base::release(semaphore_base::native_handle_type handle, ptrdiff_t count, std::error_code& ec) noexcept {
 	LONG previous;
 	if (!ReleaseSemaphore(reinterpret_cast<HANDLE>(handle), static_cast<LONG>(count), &previous)) {
-		ec = get_last_error();
+		ec = genesis::get_last_error();
 	}
 }
 
@@ -51,7 +53,7 @@ inline void semaphore_base::acquire(semaphore_base::native_handle_type handle) {
 
 inline void semaphore_base::acquire(native_handle_type handle, std::error_code& ec) noexcept {
 	if (!WaitForSingleObject(reinterpret_cast<HANDLE>(handle), INFINITE)) {
-		ec = get_last_error();
+		ec = genesis::get_last_error();
 	}
 }
 
@@ -65,7 +67,7 @@ inline auto semaphore_base::try_acquire(native_handle_type handle, std::error_co
 		return true;
 	}
 	if (res != WAIT_OBJECT_0) {
-		ec = get_last_error();
+		ec = genesis::get_last_error();
 		return false;
 	}
 	return false;
@@ -78,7 +80,7 @@ inline bool semaphore_base::try_acquire_for(semaphore_base::native_handle_type h
 	case WAIT_OBJECT_0: return true;
 	case WAIT_TIMEOUT: return false;
 	case WAIT_ABANDONED: throw std::system_error{static_cast<int>(std::errc::operation_not_permitted), std::generic_category()};
-	default: throw_last_error();
+	default: genesis::throw_last_error();
 	}
 }
 
@@ -88,8 +90,8 @@ inline auto semaphore_base::try_acquire_for(native_handle_type handle, duration_
 	switch (WaitForSingleObject(reinterpret_cast<HANDLE>(handle), static_cast<DWORD>(ms))) {
 	case WAIT_OBJECT_0: return true;
 	case WAIT_TIMEOUT: return false;
-	case WAIT_ABANDONED: ec = get_last_error(); return false;
-	default: ec = get_last_error(); return false;
+	case WAIT_ABANDONED: ec = genesis::get_last_error(); return false;
+	default: ec = genesis::get_last_error(); return false;
 	}
 }
 
