@@ -14,9 +14,6 @@ CPMAddPackage(
 	"BUILD_TESTING OFF"
 	"BUILD_EXAMPLES OFF"
 )
-CPMAddPackage("gh:catchorg/Catch2@3.6.0")
-list(APPEND CMAKE_MODULE_PATH ${Catch2_SOURCE_DIR}/extras)
-include(Catch)
 
 cmake_minimum_required(VERSION 3.21)
 
