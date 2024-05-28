@@ -45,13 +45,13 @@ namespace gaia {
 
 class semaphore_base {
 public:
-// #if GENESIS_POSIX
-// 	using native_handle_type = sem_t*;
-// 	static constexpr native_handle_type invalid_handle = nullptr;
-// #else
+#if GENESIS_POSIX
+	using native_handle_type = sem_t*;
+	static constexpr native_handle_type invalid_handle = nullptr;
+#else
 	using native_handle_type = intptr_t;
 	static constexpr native_handle_type invalid_handle = 0;
-// #endif
+#endif
 
 	using duration_type = std::chrono::nanoseconds;
 
