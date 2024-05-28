@@ -2,8 +2,6 @@
 #define GENESIS_SEMAPHORE_WINDOWS_HEADER_INCLUDED
 #pragma once
 
-#include <genesis/config.hpp>
-
 #include "gaia/semaphore.hpp"
 
 #include <system_error>
