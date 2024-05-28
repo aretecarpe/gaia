@@ -23,7 +23,7 @@
 #include "gaia/tags.hpp"
 
 #include <genesis/config.hpp>
-// #include <genesis/errno.hpp>
+#include <genesis/errno.hpp>
 
 #include <system_error>
 #include <chrono>
