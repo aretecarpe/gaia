@@ -26,7 +26,7 @@ catch {
 }
 
 Write-Host "Running tests using $cpu_count threads..."
-ls build/tests/Release
+ls build/tests/
 ctest --output-on-failure --test-dir "build/tests" -j $cpu_count
 $RESULT = $LASTEXITCODE
 Write-Host "Finished running tests..."
