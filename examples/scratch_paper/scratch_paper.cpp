@@ -36,9 +36,9 @@
 #include <semaphore.h>
 #endif
 
-#if GENESIS_MICROSOFT
-#undef max
-#endif
+// #if GENESIS_MICROSOFT
+// #undef max
+// #endif
 
 namespace gaia {
 
@@ -199,7 +199,7 @@ public:
 };
 
 using binary_semaphore = basic_semaphore<1>;
-using semaphore = basic_semaphore<std::numeric_limits<uint16_t>::max()>;
+// using semaphore = basic_semaphore<std::numeric_limits<uint16_t>::max()>;
 
 template <ptrdiff_t least_max_value>
 class basic_named_semaphore : public named_semaphore_base {
@@ -222,7 +222,7 @@ public:
 };
 
 using named_binary_semaphore = basic_named_semaphore<1>;
-using named_semaphore = basic_named_semaphore<std::numeric_limits<uint16_t>::max()>;
+// using named_semaphore = basic_named_semaphore<std::numeric_limits<uint16_t>::max()>;
 
 } // end namespace gaia
 
