@@ -225,7 +225,7 @@ public:
 using named_binary_semaphore = basic_named_semaphore<1>;
 using named_semaphore = basic_named_semaphore<std::numeric_limits<uint16_t>::max()>;
 
-} // end namespace gaia
+} 
 
 int main(int argc, char** argv) {
 	// LONG previous;
