@@ -53,5 +53,11 @@
 			"name": "msvc-x86_64-release",
 			"configurePreset": "msvc-x86_64-release"
 		}
+	],
+	"testPresets": [
+		{
+			"name": "msvc-x86_64-release",
+			"configurePreset": "msvc-x86_64-release"
+		}
 	]
 }
