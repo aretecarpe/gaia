@@ -7,7 +7,6 @@
 #include <genesis/config.hpp>
 #include <genesis/errno.hpp>
 
-#include <cctype>
 #include <chrono>
 #include <cstdint>
 #include <limits>
