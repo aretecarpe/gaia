@@ -1,0 +1,7 @@
+{
+	"name": "gaia",
+	"version": "0.0.1",
+	"description": "A Portable, C++ 17  header-only library for abstracting system-level calls behind a POSIX compliant API",
+	"type": "header-only",
+	"install_artifact": true
+}

@@ -1,0 +1,7 @@
+{
+	"name": "gaia-tests",
+	"version": "0.0.1",
+	"description": "tests for gaia",
+	"type": "binary",
+	"install_artifact": false
+}
