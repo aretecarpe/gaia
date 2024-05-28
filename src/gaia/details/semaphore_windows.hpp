@@ -5,9 +5,10 @@
 #include <genesis/config.hpp>
 
 #include "gaia/semaphore.hpp"
-#include <windows.h>
 
 #include <system_error>
+
+#include <windows.h>
 
 namespace gaia {
 
