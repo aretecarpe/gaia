@@ -27,7 +27,7 @@ catch {
 
 Write-Host "Running tests using $cpu_count threads..."
 ls build/tests/
-ctest --preset msvc-x86_64-release --output-on-failure --test-dir "build/tests/" -j $cpu_count
+ctest --preset msvc-x86_64-release --output-on-failure --test-dir "build/tests/Debug/" -j $cpu_count
 $RESULT = $LASTEXITCODE
 Write-Host "Finished running tests..."
 exit $RESULT
