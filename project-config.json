@@ -6,6 +6,9 @@
 	"products": [
 		"src/gaia",
 		"examples/scratch_paper",
+		"examples/semaphore",
+		"examples/shared_library",
+		"examples/signal_watcher",
 		"tests"
 	]
 }

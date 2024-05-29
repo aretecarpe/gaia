@@ -1,0 +1,6 @@
+{
+	"name": "semaphore",
+	"version": "0.0.1",
+	"description": "semaphore example for gaia.",
+	"type": "binary"
+}

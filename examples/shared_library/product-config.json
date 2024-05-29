@@ -1,0 +1,6 @@
+{
+	"name": "shared_library",
+	"version": "0.0.1",
+	"description": "shared_library example for gaia.",
+	"type": "binary"
+}

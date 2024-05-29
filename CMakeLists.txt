@@ -9,7 +9,7 @@ include(${CMAKE_CURRENT_BINARY_DIR}/cmake/CPM.cmake)
 CPMAddPackage(
   NAME genesis
   GITHUB_REPOSITORY aretecarpe/genesis
-  GIT_TAG fix-errno-ms # This will always pull the latest code from the `master` branch. You may also use a specific release version or tag
+  GIT_TAG master # This will always pull the latest code from the `master` branch. You may also use a specific release version or tag
   OPTIONS
 	"BUILD_TESTING OFF"
 	"BUILD_EXAMPLES OFF"

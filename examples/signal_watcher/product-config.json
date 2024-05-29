@@ -1,0 +1,6 @@
+{
+	"name": "signal_watcher",
+	"version": "0.0.1",
+	"description": "signal_watcher example for gaia.",
+	"type": "binary"
+}
