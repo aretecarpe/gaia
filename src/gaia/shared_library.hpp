@@ -82,7 +82,7 @@ public:
 	}
 
 	shared_library& operator=(const shared_library& other) {
-		if (&other == this) {
+		if (&other != this) {
 			close();
 			path_ = other.path_;
 			mode_ = other.mode_;
